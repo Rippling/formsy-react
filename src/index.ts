@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import formDataToObject from 'form-data-to-object';
 
@@ -147,6 +148,8 @@ class Formsy extends React.Component<FormsyProps, FormsyState> {
       isFormDisabled: this.isFormDisabled(),
       isValidValue: this.isValidValue,
       validate: this.validate,
+      onSubmit: this.submit,
+      onReset: this.resetInternal,
     },
   });
 
@@ -533,13 +536,8 @@ class Formsy extends React.Component<FormsyProps, FormsyState> {
     } = this.props;
 
     return React.createElement(
-      'form',
-      {
-        onReset: this.resetInternal,
-        onSubmit: this.submit,
-        ...nonFormsyProps,
-        disabled: false,
-      },
+      View,
+      nonFormsyProps,
       // eslint-disable-next-line react/destructuring-assignment
       this.props.children,
     );
