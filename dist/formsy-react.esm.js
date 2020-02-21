@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import { has as has$2, get } from 'lodash';
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -2084,8 +2085,8 @@ function (_React$Component) {
       _this.inputs.forEach(function (component) {
         var name = component.props.name;
 
-        if (data && Object.prototype.hasOwnProperty.call(data, name)) {
-          component.setValue(data[name]);
+        if (data && has$2(data, name)) {
+          component.setValue(get(data, name));
         } else {
           component.resetValue();
         }

@@ -6,6 +6,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var React = _interopDefault(require('react'));
 var reactNative = require('react-native');
+var lodash = require('lodash');
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -2090,8 +2091,8 @@ function (_React$Component) {
       _this.inputs.forEach(function (component) {
         var name = component.props.name;
 
-        if (data && Object.prototype.hasOwnProperty.call(data, name)) {
-          component.setValue(data[name]);
+        if (data && lodash.has(data, name)) {
+          component.setValue(lodash.get(data, name));
         } else {
           component.resetValue();
         }

@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('react-native')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'react', 'react-native'], factory) :
-  (global = global || self, factory(global['formsy-react'] = {}, global.React, global.reactNative));
-}(this, (function (exports, React, reactNative) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('react-native'), require('lodash')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'react', 'react-native', 'lodash'], factory) :
+  (global = global || self, factory(global['formsy-react'] = {}, global.React, global.reactNative, global.lodash));
+}(this, (function (exports, React, reactNative, lodash) { 'use strict';
 
   React = React && React.hasOwnProperty('default') ? React['default'] : React;
 
@@ -2089,8 +2089,8 @@
         _this.inputs.forEach(function (component) {
           var name = component.props.name;
 
-          if (data && Object.prototype.hasOwnProperty.call(data, name)) {
-            component.setValue(data[name]);
+          if (data && lodash.has(data, name)) {
+            component.setValue(lodash.get(data, name));
           } else {
             component.resetValue();
           }
